@@ -1,0 +1,70 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Add Order Details</h3>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Client Name:</label>
+            <select formControlName="ClientName">
+              <option [ngValue]="client" *ngFor="let client of clientNameList">{{client}}</option>
+            </select>
+
+          </div>
+          <div class="form-group">
+            <label>Item Name:</label>
+            <select formControlName="ItemName">
+              <option *ngFor="let item of itemNameList" [value]="item">{{item}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quantity:</label>
+            <input type="number" min="0" maxlength="500" formControlName="Quantity">
+          </div>
+          <div class="form-group">
+            <label>Order Date:</label>
+            <input type="hidden">
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary">Add</button>
+          </div>
+
+        </form>
+      </div>
+      <div class="col-md-6">
+        <table id="orders">
+          <thead>
+            <th>Client Name</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Order Date</th>
+          </thead>
+          <tbody>
+            
+          <tr *ngFor="let order of orderList">
+            <td>{{this.order.ClientName}}</td>
+            <td>{{this.order.ItemName}}</td>
+            <td>{{this.order.Quantity}}</td>
+            
+            <td>{{this.OrderDate|date}}</td>
+            <!-- <td>{{this.order}}</td>
+            <td>{{this.order}}</td>
+            <td>{{this.order}}</td> -->
+          
+          </tr>
+          
+       
+          </tbody>
+        </table>
+    
+         
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit" (click)="saveDb()">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>Save</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
