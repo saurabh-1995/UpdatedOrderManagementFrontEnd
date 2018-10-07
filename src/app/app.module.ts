@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule,MatTableModule } from '@angular/material';
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [{
   path: '',
@@ -53,6 +54,7 @@ const routes: Routes = [{
     OrderComponent,
     MyDialogComponent,
     ListComponent,
+    HeaderComponent,
     
     
     

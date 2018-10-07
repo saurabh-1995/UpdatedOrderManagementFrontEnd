@@ -53,6 +53,7 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.clientService.getClient().subscribe(clientdata => {
       this.clientList = clientdata
+      console.log("updatedclientList",this.clientList)
       // console.log("clientList"+JSON.stringify(this.clientList));
       this.clientList.forEach(client => {
         this.clientNameList.push(client.clientName);
@@ -66,6 +67,7 @@ export class OrderComponent implements OnInit {
 
     this.itemService.getItem().subscribe(itemdata => {
       this.itemList = itemdata
+      console.log("updateditemList",this.itemList);
       // console.log("itemList"+JSON.stringify(this.itemList));
       this.itemList.forEach(item => {
         // console.log("item"+JSON.stringify(item));
