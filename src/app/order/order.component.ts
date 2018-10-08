@@ -4,7 +4,7 @@ import { ItemService } from 'src/app/item.service';
 import { ClientModel } from 'src/app/client-model';
 import { ItemModel } from 'src/app/item-model';
 import { OrderModel } from 'src/app/order-model';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { OrderService } from '../order.service';
 import { Router } from '@angular/router';
 import {Serialize, SerializeProperty, Serializable} from 'ts-serializer';
@@ -36,7 +36,7 @@ export class OrderComponent implements OnInit {
       ClientName: ['', Validators.required],
       ItemName: ['', Validators.required],
       Quantity: ['', Validators.required],
-      
+      OrderDate:['',Validators.required]
     })
     // setInterval(() =>{
     //   debugger;
@@ -89,19 +89,26 @@ export class OrderComponent implements OnInit {
 
 
   onSubmit() {
+    debugger;
     // console.log(this.registerForm.value)
     //console.log(this.registerForm.value.ClientName)
-
-    this.ClientName = this.registerForm.value.ClientName;
-    // console.log(this.ClientName);
-    this.ItemName = this.registerForm.value.ItemName;
-    // console.log(this.ItemName);
-    this.OrderDate = new Date();
-     console.log("date"+this.OrderDate);
-    this.ItemQuantity = this.registerForm.value.Quantity;
-    // console.log(this.ItemQuantity);
-    this.orderList.push(this.registerForm.value);
-   debugger;
+    var data = {
+      ClientName :this.registerForm.value.ClientName,
+      // console.log(this.ClientName);
+      ItemName : this.registerForm.value.ItemName,
+      // console.log(this.ItemName);
+      OrderDate : new Date(),
+       
+      
+    ItemQuantity : this.registerForm.value.Quantity,
+      // console.log(this.ItemQuantity);
+    };
+   console.log("aa"+data);
+   
+    this.orderList.push(data);
+    console.log("order"+this.orderList);
+    
+  
     // this.orderList.push(this.ClientName,this.ItemName,this.ItemQuantity,this.OrderDate)
     //console.log(this.orderList);
     // this.orderListArray.push(this.orderList);
@@ -112,6 +119,7 @@ export class OrderComponent implements OnInit {
 
   saveDb()
   {
+    debugger;
     console.log(this.orderList)
     this.submitted = true;
     

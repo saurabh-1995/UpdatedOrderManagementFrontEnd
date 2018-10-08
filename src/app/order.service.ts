@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class OrderService {
-  selectedOrder:OrderModel;
+  
   order: OrderModel[];
   httpOptions={
   headers:new HttpHeaders({'content-type':'application/json'})
@@ -20,13 +20,13 @@ export class OrderService {
   postOrderList(order):Observable<any> {
     console.log(order)
  
-    return this.http.post('https://localhost:44335/api/OrderMasters', order);
+    return this.http.post('http://localhost:60183/api/OrderMasters', order);
 
   }
   
   getOrderList():Observable<any>
   {
-    return this.http.get('https://localhost:44335/api/OrderMasters').pipe(map(data=>data));
+    return this.http.get('http://localhost:60183/api/OrderMasters').pipe(map(data=>data));
     
   }
 
